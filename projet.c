@@ -36,7 +36,7 @@ void  update(char titre[][100],char add[],int quantite[] ,int count,int nv ){
      for(i=0;i<count;i++){
         if(strcmp(titre[i],add)==0){
             quantite[i] = nv;
-        }
+        }else printf("not found!\n");
         }
 
 }
