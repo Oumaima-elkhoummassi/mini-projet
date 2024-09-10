@@ -200,6 +200,7 @@ void tribullecontraire(livre l[100],int count)
 
 }
 
+
 void stock(livre l[100],int count)
 {
     int i,j;
@@ -233,44 +234,41 @@ void stock(livre l[100],int count)
         }
         break;
 
-    case 3:
-        int max=l[0].quantite;
-
-        for(i=0; i<count; i++) {
-
-            for(j=i+1; i<count ; j++) {
-                if(l[j].quantite>max) {
-                    max=l[j].quantite;
+   case 3: {
+            int min_quantite = l[0].quantite;
+            char titremin[20];
+            strcpy(titremin, l[0].titre);
+            
+            for (i = 1; i < count; i++) {
+                if (l[i].quantite < min_quantite) {
+                    min_quantite = l[i].quantite;
+                    strcpy(titremin, l[i].titre);
                 }
             }
+            printf("Le livre qui s'est le moins vendu est : %s avec %d livre reste.\n", titremin, min_quantite);
+            break;
         }
-        printf("le livre qui moin vendu : %d",max);
-        break;
-    case 4:
 
-        float max_prix=l[0].prix;
+         case 4: {
+            float max_prix = l[0].prix;
+            char titreCher[20];
+            strcpy(titreCher, l[0].titre);
 
-        for(i=0; i<count; i++) {
-            for(j=i+1; i<count ; j++) {
-                if(l[j].prix>max_prix) {
-                    max_prix=l[j].prix;
+            for (i = 1; i < count; i++) {
+                if (l[i].prix > max_prix) {
+                    max_prix = l[i].prix;
+                    strcpy(titreCher, l[i].titre);
                 }
             }
+            printf("Le livre le plus cher est : %s avec un prix de %.2f.\n", titreCher, max_prix);
+            break;
         }
-        printf("le livre le plus cher : %d",max_prix);
-        break;
 
     case 5:
         welcome();
         break;
     }
-
-
-
-
-
 }
-
 int main()
 {
     int choix;
